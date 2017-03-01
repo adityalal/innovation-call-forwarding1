@@ -585,3 +585,80 @@ exten => _913522699999.,n,Dial(SIP/56777779717589888@bsnlout,,tTo)
 exten => _913522699999.,4,Hangup
 
 
+
+# aditya for forwarding to multiple numbers below
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;aditya
+exten => _913522699998.,1,AGI(agi://127.0.0.1:4577/call_log)
+;exten => _913522699998.,n,Dial(SIP/913522699999@your_gateway_name,,Tto)
+exten => _913522699998.,n,System(echo 'Call from ${CALLERID(name)} at  ${CALLERI
+D(number)}' >> /tmp/test)
+;exten => _913522699998.,n,Dial(DAHDI/g0/9717589888)
+
+;aditya
+;exten => _5677777XX.,n,Dial(SIP/${EXTEN}@bsnlout,,tTo)
+exten => _913522699998.,n,Dial(SIP/56777779717589888@bsnlout&SIP/56777777042834976@bsnlout,,tTo)
+exten => _913522699998.,n,Wait(3)
+exten => _913522699998.,n,Dial(SIP/56777777042834976@bsnlout,,tTo)
+
+;bhavin
+;exten => _913522699998.,n,Dial(SIP/56777779891787927@bsnlout,,tTo)
+;exten => _913522699998.,n,Dial(SIP/56777779999124872@bsnlout,,tTo)
+;bhavin
+
+;aditya
+
+exten => _913522699998.,6,Hangup
+
+
+
+------------------------
+
+
+
+
+
+
+
+
+
+;aditya
+exten => _913522699998.,1,AGI(agi://127.0.0.1:4577/call_log)
+;exten => _913522699998.,n,Dial(SIP/913522699999@your_gateway_name,,Tto)
+exten => _913522699998.,n,System(echo 'Call from ${CALLERID(name)} at  ${CALLERI
+D(number)}' >> /tmp/test)
+;exten => _913522699998.,n,Dial(DAHDI/g0/9717589888)
+
+;aditya
+;exten => _5677777XX.,n,Dial(SIP/${EXTEN}@bsnlout,,tTo)
+exten => _913522699998.,n,Dial(SIP/56777779717589888@bsnlout&SIP/56777777042834976@bsnlout,,tTo)
+;exten => _913522699998.,n,Wait(3)
+;exten => _913522699998.,n,Dial(SIP/56777777042834976@bsnlout,,tTo)
+
+;bhavin
+;exten => _913522699998.,n,Dial(SIP/56777779891787927@bsnlout,,tTo)
+;exten => _913522699998.,n,Dial(SIP/56777779999124872@bsnlout,,tTo)
+;bhavin
+
+;aditya
+
+exten => _913522699998.,4,Hangup
